@@ -28,5 +28,5 @@ const config = {
     }
 };
 
-console.log(`Environtment: ${process.env.NODE_ENV}`);
-export default config[process.env.NODE_ENV?.trim()||'development'];
+console.log(`Environtment: ${process.env.NODE_ENV||'production'}`);
+export default config[process.env.NODE_ENV?.trim()||'production'];

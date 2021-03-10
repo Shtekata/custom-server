@@ -13,14 +13,15 @@ import {
 const config = {
     development: {
         PORT: process.env.PORT || 5000,
+        // DB_CONNECTION: `mongodb://localhost:27017/${PROJECT_NAME}`,
         DB_CONNECTION: `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@shtekatacluster.0dh5a.mongodb.net/${PROJECT_NAME}?retryWrites=true&w=majority`,
         SALT_ROUNDS: SALT_ROUNDS_DEV,
         SECRET: SECRET_DEV,
         COOKIE_NAME: COOKIE_NAME_DEV,
     },
     production: {
-        PORT: process.env.PORT || 80,
-        DB_CONNECTION: `mongodb://localhost:27017/${PROJECT_NAME}`,
+        PORT: process.env.PORT || 443,
+        DB_CONNECTION: `mongodb+srv://${MONGO_USER}:${MONGO_PASS}@shtekatacluster.0dh5a.mongodb.net/${PROJECT_NAME}?retryWrites=true&w=majority`,
         SALT_ROUNDS: SALT_ROUNDS_PROD,
         SECRET: SECRET_PROD,
         COOKIE_NAME: COOKIE_NAME_PROD,

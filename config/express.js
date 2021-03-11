@@ -11,6 +11,10 @@ function setupExpress(app) {
     app.use(express.static('public'));
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
+    app.use(express.json());
+    app.use(function (req, res, next) {
+        res.header('Access-Control-Allow-Origin', 'https://tranquil-sea-17355.herokuapp.com');
+    })
     app.use(session({ secret: 'shtekata', cookie: { secure: false, maxAge: 1800000 }, resave: false, saveUninitialized: true }))
     app.use(auth());
 }

@@ -1,4 +1,4 @@
-const cors = (req, res, next) => {
+const cors = () => (req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     // res.setHeader('Access-Control-Allow-Origin', 'https://shtekata-task-manager.herokuapp.com');
     res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, PATCH, DELETE');
@@ -6,3 +6,4 @@ const cors = (req, res, next) => {
     next();
 }
 export default cors;
+

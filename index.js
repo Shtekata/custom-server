@@ -8,7 +8,7 @@ import errorHandler from './middlewares/errorHandler.js';
 const app = express();
 expressConfig(app);
 mongooseConfig(app);
-app.use(routes);
+app.use('/api', routes);
 app.use(errorHandler);
 
 app.listen(config.PORT, () => console.log(`Server is running on port ${config.PORT}... http://localhost:5000/`));

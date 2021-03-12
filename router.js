@@ -2,7 +2,6 @@ import Router from 'express';
 import homeController from './controllers/homeController.js';
 import entityController from './controllers/entityController.js';
 import authController from './controllers/authController.js';
-import isAuth from './middlewares/isAuth.js';
 import { ENTITIES } from './config/constants.js'
 
 const router = Router();

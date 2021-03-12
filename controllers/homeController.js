@@ -1,4 +1,3 @@
-// x = x.map(x => ({ ...x, createdAt: x.createdAt.toString().slice(0, 10) + x.createdAt.toString().slice(15, 24)}));
 import Router from 'express';
 import entityService from '../services/entityService.js';
 import { TITLE_SERVER } from '../config/constants.js';

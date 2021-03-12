@@ -3,7 +3,6 @@ import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import auth from '../middlewares/auth.js';
-// import cors from '../middlewares/cors.js';
 import cors from 'cors';
 
 function setupExpress(app) {
@@ -12,7 +11,6 @@ function setupExpress(app) {
 
     app.use(express.static('public'));
     app.use(express.urlencoded({ extended: true }));
-    // app.use(express.json());
     app.use(cookieParser());
     app.use(session({ secret: 'shtekata', cookie: { secure: false, maxAge: 1800000 }, resave: false, saveUninitialized: true }));
     app.use(cors());

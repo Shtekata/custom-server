@@ -29,5 +29,5 @@ export const ENTITY_PROPERTY_FIVE = '';
 export const ENTITY_PROPERTY_FIVE_MIN_LENGTH = 1;
 export const PROJECT_NAME = 'theater-plays';
 export const TITLE_HOME = 'Theater Plays';
-export const TITLE_SERVER = 'Server';
+export const TITLE_SERVER = 'Custom';
 export const ENTITIES = 'plays';

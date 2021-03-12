@@ -3,7 +3,8 @@ import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import auth from '../middlewares/auth.js';
-import cors from '../middlewares/cors.js';
+// import cors from '../middlewares/cors.js';
+import cors from 'cors';
 
 function setupExpress(app) {
     app.engine('hbs', handlebars({ extname: 'hbs' }));

@@ -34,7 +34,7 @@ router.get('/details/:id', (req, res, next) => {
 
 router.get('/create', isAuth, (req, res) => res.render('entity/create', { title: `Create ${ENTITY_NAME}` }));
 router.post('/create',
-    isAuth,
+    // isAuth,
     body('title').trim()
         .notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_ONE}!`)
         .isLength({ min: ENTITY_PROPERTY_ONE_MIN_LENGTH })

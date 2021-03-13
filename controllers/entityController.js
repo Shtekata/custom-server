@@ -61,8 +61,8 @@ router.post('/create',
         if (!validationResult(req).isEmpty()) {
             let err = {};
             const errors = validationResult(req).array();
-            errors.forEach(x => err.msg = err.msg ? `${err.msg}\n${x.msg}` : x.msg);
-            return res.json({ err, body: req.body });
+            errors.forEach(x => err.msg = err.msg ? `${err.msg} ${x.msg}` : x.msg);
+            return res.json({ err: err.msg, body: req.body });
         };
 
         let data = req.body;

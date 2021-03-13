@@ -10,6 +10,7 @@ function setupExpress(app) {
     app.set('view engine', 'hbs');
 
     app.use(express.static('public'));
+    app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(cookieParser());
     app.use(session({ secret: 'shtekata', cookie: { secure: false, maxAge: 1800000 }, resave: false, saveUninitialized: true }));

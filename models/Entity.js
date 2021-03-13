@@ -1,52 +1,75 @@
 import mongoose from 'mongoose';
 
-const playSchema = new mongoose.Schema({
+const entitySchema = new mongoose.Schema({
     title: {
         type: String,
-        required: [true, 'Play title is required!'],
-        unique:true,
-        // minlength: 5
+        required: [true, 'Title is required!'],
+        unique: true,
+        minlength: 3
     },
     description: {
         type: String,
         required: [true, 'Description is required!'],
-        maxlength: 50,
-        // minlength: 20
+        minlength: 10,
+        maxlength: 200
     },
-    imageUrl: {
+    solution: {
         type: String,
-        required: true,
-        validate: /^https?/
+        minlength: 10,
+        maxlength: 500
     },
     isPublic: {
         type: Boolean,
-        default: false
-    },
-    // price: {
-    //     type: Number,
-    //     required: [true, 'Price is required!'],
-    //     min: 0  
-    // },
-    // brand: {
-    //     type: String,
-    //      required: [true, 'Brand is required!'],
-    // },
-    createdAt: {
-        type: Date,
-        required: true
+        required: true,
+        default: true
     },
     creator: {
         type: mongoose.Types.ObjectId, required: true, ref: 'User'
     },
-    usersLiked: [{
+    createdAt: {
+        type: Date,
+        required: true
+    },
+    executor: {
         type: mongoose.Types.ObjectId, ref: 'User'
-    }]
+    },
+    executedOn: {
+        type: Date,
+    },
+    isToDo: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    isInProgress: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    isDone: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    isOld: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    isDeleted: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
+    // usersLiked: [{
+    //     type: mongoose.Types.ObjectId, ref: 'User'
+    // }]
 });
 
-playSchema.pre('validate', function (next) {
+entitySchema.pre('validate', function (next) {
     const date = new Date();
     this.createdAt = date;
     next();
 });
 
-export default mongoose.model('Play', playSchema);
+export default mongoose.model('Task', entitySchema);

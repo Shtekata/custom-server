@@ -13,10 +13,10 @@ import {
     ENTITY_PROPERTY_TWO_MAX_LENGTH,
     ENTITY_PROPERTY_THREE,
     ENTITY_PROPERTY_THREE_MIN_LENGTH,
+    ENTITY_PROPERTY_THREE_MAX_LENGTH,
     ENTITY_PROPERTY_FOUR,
     ENTITY_PROPERTY_FOUR_DEFAULT,
     ENGLISH_ALPHANUMERIC_MESSAGE,
-    ENGLISH_ALPHANUMERIC_PATTERN_WITH_SPACE,
 } from '../config/constants.js';
 
 const router = Router();
@@ -45,32 +45,31 @@ router.post('/create',
         .notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_TWO}!`)
         .isLength({ min: ENTITY_PROPERTY_TWO_MIN_LENGTH, max: ENTITY_PROPERTY_TWO_MAX_LENGTH })
         .withMessage(`${ENTITY_PROPERTY_TWO} must be between ${ENTITY_PROPERTY_TWO_MIN_LENGTH} and ${ENTITY_PROPERTY_TWO_MAX_LENGTH} characters!`),
-    body('imageUrl', 'Not valid image URL').isURL({ protocols: ['http', 'https'] }),
+     body('solution').trim()
+        .notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_THREE}!`)
+        .isLength({ min: ENTITY_PROPERTY_THREE_MIN_LENGTH, max: ENTITY_PROPERTY_THREE_MAX_LENGTH })
+        .withMessage(`${ENTITY_PROPERTY_THREE} must be between ${ENTITY_PROPERTY_THREE_MIN_LENGTH} and ${ENTITY_PROPERTY_THREE_MAX_LENGTH} characters!`),
     body('isPublic').custom((value, { req }) => {
-        if (value === 'on' || value === undefined) return true;
-        throw {err:{msg:'isPublic not working properly!'}}; }),
+            if (value === 'on' || value === undefined) return true;
+            throw {err:{msg:'isPublic not working properly!'}}; }),
+    // body('imageUrl', 'Not valid image URL').isURL({ protocols: ['http', 'https'] }),
     // body('price').trim()
-    //     .notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_THREE}!`)
     //     .isFloat({ min: ENTITY_PROPERTY_THREE_MIN_LENGTH })
     //     .withMessage(`${ENTITY_PROPERTY_THREE} must be at least ${ENTITY_PROPERTY_THREE_MIN_LENGTH} value!`),
-    // body('brand').notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_FIVE}`)
-    //     .isLength({ min: ENTITY_PROPERTY_FIVE_MIN_LENGTH })
-    //     .withMessage(`${ENTITY_PROPERTY_FIVE} must be at least ${ENTITY_PROPERTY_FIVE_MIN_LENGTH} characters!`),
     (req, res, next) => {
 
         if (!validationResult(req).isEmpty()) {
             let err = {};
             const errors = validationResult(req).array();
             errors.forEach(x => err.msg = err.msg ? `${err.msg}\n${x.msg}` : x.msg);
-            req.body.isPublic ? req.body.isChecked = 'checked' : '';
-            return res.render('entity/create', { title: `Create ${ENTITY_NAME}`, err, x: req.body });
+            return res.json({ err, body: req.body });
         };
 
         let data = req.body;
         data.creator = res.locals.user._id;
         data.isPublic = !!data.isPublic;
         entityService.createOne(data)
-            .then(x => res.redirect('/'))
+            .then(x => res.json({ message: 'Entity is created!' }))
             .catch(next);
     });
 

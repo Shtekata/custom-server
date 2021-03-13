@@ -66,7 +66,6 @@ router.post('/create',
         };
 
         let data = req.body;
-        data.creator = res.locals.user._id;
         data.isPublic = !!data.isPublic;
         entityService.createOne(data)
             .then(x => res.json({ message: 'Entity is created!' }))

@@ -6,10 +6,10 @@ const SECRET = config.SECRET;
 
 export default function () {
     return (req, res, next) => {
-        const token = req.cookies[COOKIE_NAME];
-        if (token) {
+        const token = req.get('Authorization')?.split(' ')[1];
+        if (token && token != 'undefined'){
             jwt.verify(token, SECRET, (e, x) => {
-                if (e || !x._id) return res.clearCookie(COOKIE_NAME);
+                if (e) next(e);
                 res.locals.user = x;
             });
         }

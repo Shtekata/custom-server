@@ -1,0 +1,66 @@
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+invalid signature
+Not authenticated.
+invalid signature
+You are already in the system!
+You are already in the system!
+You are already in the system!
+You are already in the system!
+You are already in the system!
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+User is logged in!
+jwt malformed
+User is logged in!
+jwt malformed
+jwt malformed
+Not authenticated.
+User is not logged in!
+User is not logged in!
+User is not logged in!
+User is not logged in!
+User is not logged in!
+User is not logged in!
+User is logged in!
+Not authenticated.
+Not authenticated.
+Not authenticated.
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+Entity not found!
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+User is not a creator of entity!
+Path `creator` is required.
+jwt expired
+Cannot read property 'locals' of undefined
+Entity not found!
+Entity not found!
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
+Entity not found!

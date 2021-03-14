@@ -36,7 +36,15 @@ function getAllLikesDesc(query) {
 };
 
 function getOne(id) {
-    return Entity.findById(id).lean();
+    return Entity.findById(id)
+        .then(x => {
+            if (!x) {
+                const err = new Error('Entity not found!');
+                err.statusCode = 404;
+                throw err;
+            }
+            return x
+        });
 }
 
 function getOneWithAccessories(id) {

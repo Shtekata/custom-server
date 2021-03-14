@@ -1,3 +1,4 @@
+process.env.NODE_ENV ? true : process.env.NODE_ENV = 'production';
 import express from 'express';
 import config from './config/config.js';
 import expressConfig from './config/express.js';
@@ -11,6 +12,6 @@ mongooseConfig(app);
 app.use('/api', routes);
 app.use(errorHandler);
 
-app.listen(config.PORT, () => console.log(`Server is running on port ${config.PORT}... http://localhost:5000/`));
+app.listen(config.PORT, () => console.log(`Server is running on port ${config.PORT}... http://localhost:${config.PORT}/`));
 
 

@@ -31,6 +31,10 @@ const userSchema = new mongoose.Schema({
         //     message: (x) => `${x.value} schould consist only english letters and digits!`
         // },
     },
+    token: {
+        type: String,
+        default: ''
+    },
     roles: [{ type: String }],
     likedPlays: [{
         type: mongoose.Types.ObjectId, ref: 'Play'

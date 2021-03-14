@@ -14,27 +14,18 @@ import {
     ENTITY_PROPERTY_THREE,
     ENTITY_PROPERTY_THREE_MIN_LENGTH,
     ENTITY_PROPERTY_THREE_MAX_LENGTH,
-    ENTITY_PROPERTY_FOUR,
-    ENTITY_PROPERTY_FOUR_DEFAULT,
-    ENGLISH_ALPHANUMERIC_MESSAGE,
 } from '../config/constants.js';
 
 const router = Router();
 
-router.get('/details/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
     entityService.getOne(req.params.id)
-        .then(x => {
-            const userId = res.locals.user._id;
-            if (x.creator == userId) x.isCreator = true;
-            if (x.usersLiked.toString().includes(userId)) x.isLiked = true;
-            res.render(`entity/details`, { title: `${ENTITY_NAME} Details`, x, err: req.session.err })
-        })
+        .then(x => { res.status(200).json({ enitity: x, msg: 'Successfully get entity!' }) })
         .catch(next)
 });
 
-router.get('/create', isAuth, (req, res) => res.render('entity/create', { title: `Create ${ENTITY_NAME}` }));
-router.post('/create',
-    // isAuth,
+router.post('/',
+    isAuth,
     body('title').trim()
         .notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_ONE}!`)
         .isLength({ min: ENTITY_PROPERTY_ONE_MIN_LENGTH })
@@ -67,38 +58,34 @@ router.post('/create',
 
         let data = req.body;
         data.isPublic = !!data.isPublic;
+        data.creator = res.locals.user._id;
         entityService.createOne(data)
-            .then(x => res.status(201).json({ entity: x }))
+            .then(x => res.status(201).json({ _id: x._id, msg: 'Successfully created entity!' }))
             .catch(next);
     });
 
-router.get('/edit/:id', isAuth, (req, res, next) => {
+router.put('/:id', isAuth, (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => {
-            x.isPublic ? x.isChecked = 'checked' : '';
-            if (x.creator == res.locals.user._id) res.render('entity/edit', { title: `Edit ${ENTITY_NAME} Page`, x });
-            else res.redirect('/');
-        })
-        .catch(next);
-})
-router.post('/edit/:id', isAuth, (req, res, next) => {
-    entityService.getOne(req.params.id)
-        .then(x => {
-            if (x.creator != res.locals.user._id) return;
+            if (x.creator != res.locals.user._id) throw { status: 401, msg: 'User is not a creator of entity!' };
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })
-        .then(x => res.redirect(`/${ENTITIES}/details/${req.params.id}`))
+        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!' }))
         .catch(next);
 })
 
-router.get('/delete/:id', isAuth, (req, res, next) => {
+router.delete('/:id', isAuth, (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => {
-            if (x.creator != res.locals.user._id) return;
+            if (x.creator != res.locals.user._id) {
+                const err = new Error('You are not author!');
+                err.statusCode = 403;
+                throw err;
+            }
             return entityService.deleteOne(req.params.id)
         })
-        .then(x => res.redirect('/'))
+        .then(x => res.json({ _id: x._id, msg: 'Successfully delete entity!' }))
         .catch(next);
 })
 

@@ -18,11 +18,11 @@ const COOKIE_NAME = config.COOKIE_NAME;
 router.get('/login', isGuest, (req, res) => {
     res.render('auth/login', { title: 'Login Page' });
 });
-router.post('/login', (req, res) => {
+router.post('/login', isGuest, (req, res, next) => {
     const { username, email, password } = req.body;
     authService.login({ username, password })
-        .then(x => { res.cookie('AAA', x.token).status(200).json({ message: 'User successfully loged in!', token: x.token, userId: x.userId }) })
-        .catch(x => res.json({ err: x.msg }));
+        .then(x => { res.status(200).json({ message: 'User successfully loged in!', token: x[1], userId: x[2]._id.toString() }) })
+        .catch(x => next(x));
 });
 
 router.get('/register', isGuest, (req, res) => {
@@ -54,16 +54,17 @@ router.post('/register',
         };
         
         authService.register({ username, email, password })
-            .then(x => { res.json({ _id: x._id }) })
+            .then(x => res.json({ _id: x._id }))
             .catch(x => res.json({ err: x.msg }));
     });
 
-router.get('/logout', isAuth, (req, res) => {
-    res.clearCookie(COOKIE_NAME);
-    res.redirect('/');
+router.get('/logout', isAuth, (req, res, next) => {
+    authService.logout(res.locals.user.username)
+        .then(x => res.status(200).json({ _id: x._id }))
+        .catch(x => res.json({ err: x }));
 });
 
-router.get('/profile/:id', (req, res, next) => {
+router.get('/profile/:id', isAuth, (req, res, next) => {
     authService.getUserWithOffersBought(req.params.id)
         .then(x => {
             x.totalCost = 0;

@@ -11,14 +11,18 @@ const login = ({ username, password, email }) => User.findOne({ username })
         if (!x) throw { msg: 'User with given username do not exists!' };
         const y = await bcrypt.compare(password, x.password);
         return { x, y };
-    }).then(z => {
+    })
+    .then(z => {
         if (!z.y) throw { msg: 'Password does not match!' };
-        return {
-            userId: z.x._id,
-            token: jwt.sign({ _id: z.x._id, username: z.x.username, email: z.x.email, roles: z.x.roles }, SECRET, { expiresIn: '1h' })
-        };
-    });
-
+        const token = jwt.sign({ _id: z.x._id, username: z.x.username, email: z.x.email, roles: z.x.roles }, SECRET, { expiresIn: '1h' });
+        if (z.x.token) jwt.verify(z.x.token, SECRET, (e, x) => {
+            if (e) return;
+            throw { status: 409, message: 'User is logged in!', token };
+        });
+        return Promise.all([User.updateOne({ username }, { token }), token, z.x]);
+    })
+    .catch(x => { throw x });
+    
 const register = ({ username, password, email }) => {
     return User.findOne({
         username: { $regex: new RegExp(`^${username}$`, 'i') },
@@ -47,13 +51,19 @@ const register = ({ username, password, email }) => {
         });
 };
 
+const logout = (username) => {
+    return User.findOneAndUpdate({ username }, { token: '' }, { useFindAndModify: false })
+        .catch(x => { throw x });
+}
+
 const getUser = (id) => User.findById(id);
 
-const getUserWithOffersBought = (id) => User.findById(id).populate('offersBought').lean();
+const getUserWithOffersBought = (id) => User.findById(id).populate('offersBought');
 
 export default {
     login,
     register,
+    logout,
     getUser,
     getUserWithOffersBought
 }

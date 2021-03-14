@@ -18,10 +18,10 @@ const COOKIE_NAME = config.COOKIE_NAME;
 router.get('/login', isGuest, (req, res) => {
     res.render('auth/login', { title: 'Login Page' });
 });
-router.post('/login', isGuest, (req, res) => {
+router.post('/login', (req, res) => {
     const { username, email, password } = req.body;
     authService.login({ username, password })
-        .then(x => { res.cookie(COOKIE_NAME, x, { httpOnly: true }); res.json({ x }) })
+        .then(x => { res.cookie('AAA', x.token).status(200).json({ message: 'User successfully loged in!', token: x.token, userId: x.userId }) })
         .catch(x => res.json({ err: x.msg }));
 });
 
@@ -54,8 +54,7 @@ router.post('/register',
         };
         
         authService.register({ username, email, password })
-            .then(x => authService.login({ username, email, password }))
-            .then(x => { res.cookie(COOKIE_NAME, x); res.json(username) })
+            .then(x => { res.json({ _id: x._id }) })
             .catch(x => res.json({ err: x.msg }));
     });
 

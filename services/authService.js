@@ -13,7 +13,10 @@ const login = ({ username, password, email }) => User.findOne({ username })
         return { x, y };
     }).then(z => {
         if (!z.y) throw { msg: 'Password does not match!' };
-        return jwt.sign({ _id: z.x._id, username: z.x.username, email: z.x.email, roles: z.x.roles }, SECRET);
+        return {
+            userId: z.x._id,
+            token: jwt.sign({ _id: z.x._id, username: z.x.username, email: z.x.email, roles: z.x.roles }, SECRET, { expiresIn: '1h' })
+        };
     });
 
 const register = ({ username, password, email }) => {

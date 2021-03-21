@@ -20,7 +20,7 @@ const router = Router();
 
 router.get('/', (req, res, next) => {
     entityService.getAll(req.params.id)
-        .then(x => { res.status(200).json({ enitities: x, msg: 'Successfully get entity!' }) })
+        .then(x => { res.status(200).json({ enitities: x, msg: 'Successfully get entity!', token: res.locals.token }) })
         .catch(next)
 });
 

@@ -64,3 +64,4 @@ Entity not found!
 Entity not found!
 E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Pesho-Mesho-Desho-Fresho" }
 Entity not found!
+jwt expired

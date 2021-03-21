@@ -58,6 +58,8 @@ const logout = (username) => {
 
 const getUser = (id) => User.findById(id);
 
+const getUserByToken = (token) => User.findOne({ token });
+
 const getUserWithOffersBought = (id) => User.findById(id).populate('offersBought');
 
 export default {
@@ -65,5 +67,6 @@ export default {
     register,
     logout,
     getUser,
+    getUserByToken,
     getUserWithOffersBought
 }

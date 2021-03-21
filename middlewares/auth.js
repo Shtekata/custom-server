@@ -26,8 +26,8 @@ export default function () {
                         })
                         .then(x => {
                             if (!x) return null;
-                            res.locals.token = x[0];
-                            res.locals.user = x[1];
+                            res.locals.user = x[0];
+                            res.locals.token = x[1];
                         })
                         .catch(x => console.log(x));
                 }

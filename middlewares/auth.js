@@ -14,18 +14,22 @@ export default function () {
                 if (e && e.message == 'jwt expired') {
                     authService.getUserByToken(token)
                         .then(x => {
-                            if (!x) throw ('No user!')
+                            if (!x) return null;
                             return {
                                 username: x.username,
                                 token: jwt.sign({ _id: x._id, username: x.username, email: x.email, roles: x.roles }, SECRET, { expiresIn: '1h' })
                             };
                         })
-                        .then(x => Promise.all([User.updateOne({ username: x.username }, { token: x.token }), x.token]))
                         .then(x => {
+                            if (!x) return null;
+                            return Promise.all([User.updateOne({ username: x.username }, { token: x.token }), x.token])
+                        })
+                        .then(x => {
+                            if (!x) return null;
                             res.locals.token = x[0];
                             res.locals.user = x[1];
                         })
-                        .catch(x => next());
+                        .catch(x => console.log(x));
                 }
                 else if (e) next(e);
                 else {

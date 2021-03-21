@@ -3,7 +3,8 @@ import Entity from '../models/Entity.js';
 
 function getAll(query) {
     return Entity.find()
-        .where({ title: { $regex: query || '', $options: 'i' } });
+        .where({ title: { $regex: query || '', $options: 'i' } })
+        .populate('creator');
 }
 
 function getAllAsc(query) {
@@ -52,7 +53,7 @@ function getOne(id) {
 }
 
 function getOneWithAccessories(id) {
-    return Entity.findById(id).populate('accessories').lean();
+    return Entity.findById(id).populate('accessories');
 }
 
 function createOne(data) {
@@ -120,7 +121,7 @@ async function like(id, userId) {
 }
 
 function getUserEntities(id) {
-    return Entity.find({ creator: id }).lean();
+    return Entity.find({ creator: id });
 }
 
 export default {

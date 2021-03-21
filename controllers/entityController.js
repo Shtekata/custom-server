@@ -18,6 +18,12 @@ import {
 
 const router = Router();
 
+router.get('/', (req, res, next) => {
+    entityService.getAll(req.params.id)
+        .then(x => { res.status(200).json({ enitities: x, msg: 'Successfully get entity!' }) })
+        .catch(next)
+});
+
 router.get('/:id', (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => { res.status(200).json({ enitity: x, msg: 'Successfully get entity!' }) })

@@ -1,15 +1,19 @@
 import User from '../models/User.js';
 import Entity from '../models/Entity.js';
-import authService from './authService.js';
+
+function getAll(query) {
+    return Entity.find()
+        .where({ title: { $regex: query || '', $options: 'i' } });
+}
 
 function getAllAsc(query) {
-    return Entity.find().setOptions({ lean: true })
+    return Entity.find()
         .where({ title: { $regex: query || '', $options: 'i' } })
         .sort('createdAt');
 }
 
 function getAllDesc(query) {
-    return Entity.find().setOptions({ lean: true })
+    return Entity.find()
         .where({ title: { $regex: query || '', $options: 'i' } })
         .sort('-createdAt');
 };
@@ -120,6 +124,7 @@ function getUserEntities(id) {
 }
 
 export default {
+    getAll,
     getAllAsc,
     getAllDesc,
     getAllLikesDesc,

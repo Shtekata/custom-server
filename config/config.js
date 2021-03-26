@@ -1,6 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import {
-    MONGO_USER,
-    MONGO_PASS,
     SALT_ROUNDS_DEV,
     SALT_ROUNDS_PROD,
     SECRET_DEV,
@@ -9,6 +9,9 @@ import {
     COOKIE_NAME_PROD,
     PROJECT_NAME
 } from './constants.js';
+
+const MONGO_USER = process.env.MONGO_USER;
+const MONGO_PASS = process.env.MONGO_PASS;
 
 const config = {
     development: {
@@ -28,5 +31,5 @@ const config = {
     }
 };
 
-console.log(`Environtment: ${process.env.NODE_ENV||'production'}`);
+console.log(`Environtment: ${process.env.NODE_ENV||'production'} | Mongo User: ${process.env.MONGO_USER} | Mongo pass: ${process.env.MONGO_PASS}`);
 export default config[process.env.NODE_ENV?.trim()||'production'];

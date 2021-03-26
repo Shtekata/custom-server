@@ -1,5 +1,3 @@
-export const MONGO_USER = 'appuser';
-export const MONGO_PASS = '7u8';
 export const SALT_ROUNDS_DEV = 9;
 export const SALT_ROUNDS_PROD = 10;
 export const SECRET_DEV = 'geshlandia';

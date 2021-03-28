@@ -1,4 +1,3 @@
-process.env.NODE_ENV ? true : process.env.NODE_ENV = 'production';
 import express from 'express';
 import config from './config/config.js';
 import expressConfig from './config/express.js';

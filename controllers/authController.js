@@ -15,19 +15,16 @@ import {
 const router = Router();
 const COOKIE_NAME = config.COOKIE_NAME;
 
-router.get('/login', isGuest, (req, res) => {
-    res.render('auth/login', { title: 'Login Page' });
-});
 router.post('/login', isGuest, (req, res, next) => {
     const { username, email, password } = req.body;
     authService.login({ username, password })
-        .then(x => { res.status(200).json({ message: 'User successfully loged in!', token: x[1], userId: x[2]._id.toString() }) })
+        .then(x => {
+            res.status(200)
+                .json({ message: 'User successfully loged in!', token: x[1], userId: x[2]._id.toString(), username: x[2].username })
+        })
         .catch(x => next(x));
 });
 
-router.get('/register', isGuest, (req, res) => {
-    res.render('auth/register', { title: 'Register Page' });
-});
 router.post('/register',
     isGuest,
     body('username').trim()

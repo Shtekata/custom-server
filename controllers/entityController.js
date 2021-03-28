@@ -1,4 +1,4 @@
-import Router from 'express';
+import { Router } from 'express';
 import entityService from '../services/entityService.js';
 import isAuth from '../middlewares/isAuth.js';
 import { body, validationResult } from 'express-validator';

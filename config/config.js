@@ -31,5 +31,5 @@ const config = {
     }
 };
 
-console.log(`Environtment: ${process.env.NODE_ENV||'production'} | Mongo User: ${process.env.MONGO_USER} | Mongo pass: ${process.env.MONGO_PASS}`);
-export default config[process.env.NODE_ENV?.trim()||'production'];
+console.log(`Environtment: ${process.env.NODE_ENV} | Mongo User: ${process.env.MONGO_USER} | Mongo pass: ${process.env.MONGO_PASS}`);
+export default config[process.env.NODE_ENV?.trim()];

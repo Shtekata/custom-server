@@ -17,7 +17,7 @@ const login = ({ username, password, email }) => User.findOne({ username })
         const token = jwt.sign({ _id: z.x._id, username: z.x.username, email: z.x.email, roles: z.x.roles }, SECRET, { expiresIn: '1h' });
         if (z.x.token) jwt.verify(z.x.token, SECRET, (e, x) => {
             if (e) return;
-            throw { status: 409, message: 'User is logged in!', token };
+            throw { status: 409, message: 'User is logged in!', token, username: z.x.username };
         });
         return Promise.all([User.updateOne({ username }, { token }), token, z.x]);
     })

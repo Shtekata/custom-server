@@ -2,7 +2,6 @@ import fs from 'fs';
 
 export default (error, req, res, next) => {
     const err = error;
-    err.msg === 'User with given username or email already exists!' ? err.status = 409 : true;
     err.status = error.status || error.statusCode || 500;
     err.msg = error.message || error.msg || 'Something went wrong';
     err.type = 'ERROR'

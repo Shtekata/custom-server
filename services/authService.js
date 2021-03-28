@@ -8,28 +8,29 @@ const SECRET = config.SECRET;
 
 const login = ({ username, password, email }) => User.findOne({ username })
     .then(async x => {
-        if (!x) throw { msg: 'User with given username do not exists!' };
+        if (!x) throw { msg: 'User with given username do not exists!', status: 409 };
         const y = await bcrypt.compare(password, x.password);
         return { x, y };
     })
     .then(z => {
-        if (!z.y) throw { msg: 'Password does not match!' };
+        if (!z.y) throw { msg: 'Password does not match!', status: 409 };
         const token = jwt.sign({ _id: z.x._id, username: z.x.username, email: z.x.email, roles: z.x.roles }, SECRET, { expiresIn: '1h' });
         if (z.x.token) jwt.verify(z.x.token, SECRET, (e, x) => {
             if (e) return;
-            throw { status: 409, message: 'User is logged in!', token, username: z.x.username };
+            throw { msg: 'User is logged in!', status: 409, token, username: z.x.username };
         });
         return Promise.all([User.updateOne({ username }, { token }), token, z.x]);
     })
     .catch(x => { throw x });
     
 const register = ({ username, password, email }) => {
-    return User.findOne({
-        username: { $regex: new RegExp(`^${username}$`, 'i') },
-        email: { $regex: new RegExp(`^${email}$`, 'i') }
-    })
+    return User.findOne({ username: { $regex: new RegExp(`^${username}$`, 'i') } })
         .then(x => {
-            if (x) { throw { msg: 'User with given username or email already exists!' } };
+            if (x) { throw { message: 'User with given username already exists!', status: 409 } };
+            return User.findOne({ email: { $regex: new RegExp(`^${email}$`, 'i') } })
+        })
+        .then(x => {
+            if (x) { throw { message: 'User with given email already exists!', status: 409 } };
             return bcrypt.genSalt(SALT_ROUNDS);
         })
         .then(x => { return bcrypt.hash(password, x) })
@@ -40,7 +41,8 @@ const register = ({ username, password, email }) => {
         .catch(x => {
             let err = {};
             if (!x.errors) {
-                err.msg = x.msg;
+                err.msg = x.message;
+                err.status = x.status;
             } else {
                 const errors = Object.keys(x.errors).map(y => ({ 'err-msg': x.errors[y].message }));
                 Object.keys(x.errors).map(y =>

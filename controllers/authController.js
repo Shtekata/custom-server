@@ -51,14 +51,18 @@ router.post('/register',
         };
         
         authService.register({ username, email, password })
-            .then(x => res.json({ _id: x._id }))
-            .catch(x => res.json({ err: x.msg }));
+            .then(x => authService.login({ username, password }))
+            .then(x => {
+            res.status(200)
+                .json({ message: 'User successfully loged in!', token: x[1], userId: x[2]._id.toString(), username: x[2].username })
+        })
+            .catch(next);
     });
 
 router.get('/logout', isAuth, (req, res, next) => {
     authService.logout(res.locals.user.username)
         .then(x => res.status(200).json({ _id: x._id }))
-        .catch(x => res.json({ err: x }));
+        .catch(next);
 });
 
 router.get('/profile/:id', isAuth, (req, res, next) => {

@@ -29,7 +29,7 @@ const register = ({ username, password, email }) => {
         email: { $regex: new RegExp(`^${email}$`, 'i') }
     })
         .then(x => {
-            if (x) throw { message: 'User with given username or email already exists!' };
+            if (x) { throw { msg: 'User with given username or email already exists!' } };
             return bcrypt.genSalt(SALT_ROUNDS);
         })
         .then(x => { return bcrypt.hash(password, x) })
@@ -40,7 +40,7 @@ const register = ({ username, password, email }) => {
         .catch(x => {
             let err = {};
             if (!x.errors) {
-                err.msg = x.message;
+                err.msg = x.msg;
             } else {
                 const errors = Object.keys(x.errors).map(y => ({ 'err-msg': x.errors[y].message }));
                 Object.keys(x.errors).map(y =>

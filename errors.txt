@@ -90,3 +90,42 @@ User is logged in!
 User is logged in!
 User is logged in!
 User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+Not authenticated.
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+ValidationError is not defined
+User with given username or email already exists!
+User with given username or email already exists!
+err.status is not a function
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+Something went wrong
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+User with given username or email already exists!
+Not authenticated.
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!
+User is logged in!

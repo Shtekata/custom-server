@@ -20,7 +20,7 @@ const router = Router();
 
 router.get('/', (req, res, next) => {
     entityService.getAll(req.params.id)
-        .then(x => { res.status(200).json({ enitities: x, msg: 'Successfully get entity!', token: res.locals.token }) })
+        .then(x => { res.status(200).json({ entities: x, msg: 'Successfully get entities!', token: res.locals.token }) })
         .catch(next)
 });
 
@@ -74,6 +74,16 @@ router.put('/:id', isAuth, (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => {
             if (x.creator != res.locals.user._id) throw { status: 401, msg: 'User is not a creator of entity!' };
+            req.body.isPublic = !!req.body.isPublic;
+            return entityService.updateOne(req.params.id, req.body);
+        })
+        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!' }))
+        .catch(next);
+})
+
+router.patch('/:id', isAuth, (req, res, next) => {
+    entityService.getOne(req.params.id)
+        .then(x => {
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })

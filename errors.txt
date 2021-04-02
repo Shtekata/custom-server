@@ -160,3 +160,55 @@ User with given username do not exists!
 User with given username do not exists!
 User with given username do not exists!
 User with given username do not exists!
+jwt malformed
+jwt malformed
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://docs.atlas.mongodb.com/security-whitelist/
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+User with given username do not exists!
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+User is not a creator of entity!
+Not authenticated.
+Not authenticated.
+User is logged in!
+Not authenticated.
+Not authenticated.
+Not authenticated.
+jwt malformed
+jwt malformed
+jwt malformed
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+User with given username do not exists!
+Not authenticated.

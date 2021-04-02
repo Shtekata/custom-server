@@ -212,3 +212,217 @@ Not authenticated.
 Not authenticated.
 User with given username do not exists!
 Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+jwt malformed
+jwt malformed
+User with given username do not exists!
+Not authenticated.
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User is logged in!
+jwt malformed
+jwt malformed
+jwt malformed
+Not authenticated.
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+Not authenticated.
+Not authenticated.
+Not authenticated.
+jwt malformed
+jwt malformed
+User is logged in!
+jwt malformed
+jwt malformed
+You have to log off!
+Not authenticated.
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+User is logged in!
+You have to log off!
+Not authenticated.
+jwt malformed
+jwt malformed
+User is logged in!
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+Not authenticated.
+jwt malformed
+User is logged in!
+You have to log off!
+Not authenticated.
+jwt malformed
+jwt malformed
+jwt malformed
+User is logged in!
+You have to log off!
+Not authenticated.
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+User is logged in!
+You have to log off!
+You have to log off!
+You have to log off!
+You have to log off!
+You have to log off!
+Not authenticated.
+jwt malformed
+jwt malformed
+jwt malformed
+jwt malformed
+User is logged in!
+jwt malformed
+jwt malformed
+Not authenticated.
+jwt malformed
+User is logged in!
+You have to log off!
+Not authenticated.
+jwt malformed
+User is logged in!
+Not authenticated.
+jwt malformed
+jwt malformed
+User is logged in!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!
+User with given username do not exists!

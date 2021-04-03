@@ -42,8 +42,8 @@ router.post('/',
         .notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_TWO}!`)
         .isLength({ min: ENTITY_PROPERTY_TWO_MIN_LENGTH, max: ENTITY_PROPERTY_TWO_MAX_LENGTH })
         .withMessage(`${ENTITY_PROPERTY_TWO} must be between ${ENTITY_PROPERTY_TWO_MIN_LENGTH} and ${ENTITY_PROPERTY_TWO_MAX_LENGTH} characters!`),
-     body('solution').trim()
-        .notEmpty().withMessage(`Specify ${ENTITY_PROPERTY_THREE}!`)
+    body('solution').trim()
+        .optional({ checkFalsy: true })
         .isLength({ min: ENTITY_PROPERTY_THREE_MIN_LENGTH, max: ENTITY_PROPERTY_THREE_MAX_LENGTH })
         .withMessage(`${ENTITY_PROPERTY_THREE} must be between ${ENTITY_PROPERTY_THREE_MIN_LENGTH} and ${ENTITY_PROPERTY_THREE_MAX_LENGTH} characters!`),
     body('isPublic').custom((value, { req }) => {
@@ -59,7 +59,7 @@ router.post('/',
             let err = {};
             const errors = validationResult(req).array();
             errors.forEach(x => err.msg = err.msg ? `${err.msg} ${x.msg}` : x.msg);
-            return res.json({ err: err.msg, body: req.body });
+            throw ({ msg: err.msg, status: 403, body: req.body });
         };
 
         let data = req.body;

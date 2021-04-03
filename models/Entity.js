@@ -39,7 +39,7 @@ const entitySchema = new mongoose.Schema({
     isToDo: {
         type: Boolean,
         required: true,
-        default: false
+        default: true
     },
     isInProgress: {
         type: Boolean,

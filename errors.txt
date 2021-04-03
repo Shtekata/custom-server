@@ -426,3 +426,11 @@ User with given username do not exists!
 User with given username do not exists!
 User with given username do not exists!
 User with given username do not exists!
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Something went wrong
+Specify Solution! Solution must be between 10 and 500 characters!
+Solution must be between 10 and 500 characters!

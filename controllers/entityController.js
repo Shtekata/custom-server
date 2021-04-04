@@ -20,13 +20,13 @@ const router = Router();
 
 router.get('/', (req, res, next) => {
     entityService.getAll(req.params.id)
-        .then(x => { res.status(200).json({ entities: x, msg: 'Successfully get entities!', token: res.locals.token }) })
+        .then(x => { res.status(200).json({ entities: x, msg: 'Successfully get entities!', token: res.locals.token, username: res.locals.user?.username }) })
         .catch(next)
 });
 
 router.get('/:id', (req, res, next) => {
     entityService.getOne(req.params.id)
-        .then(x => { res.status(200).json({ entity: x, msg: 'Successfully get entity!', token: res.locals.token }) })
+        .then(x => { res.status(200).json({ entity: x, msg: 'Successfully get entity!', token: res.locals.token, username: res.locals.user?.username }) })
         .catch(next)
 });
 
@@ -66,7 +66,7 @@ router.post('/',
         data.isPublic = !!req.body.isPublic;
         data.creator = res.locals.user._id;
         entityService.createOne(data)
-            .then(x => res.status(201).json({ _id: x._id, msg: 'Successfully created entity!', token: res.locals.token }))
+            .then(x => res.status(201).json({ _id: x._id, msg: 'Successfully created entity!', token: res.locals.token, username: res.locals.user?.username }))
             .catch(next);
     });
 
@@ -79,7 +79,7 @@ router.put('/:id', isAuth, (req, res, next) => {
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })
-        .then(x => res.status(200).json({ entity: x, msg: 'Successfully updated entity!', token: res.locals.token }))
+        .then(x => res.status(200).json({ entity: x, msg: 'Successfully updated entity!', token: res.locals.token, username: res.locals.user?.username }))
         .catch(next);
 })
 
@@ -89,7 +89,7 @@ router.patch('/:id', isAuth, (req, res, next) => {
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })
-        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!', token: res.locals.token }))
+        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!', token: res.locals.token, username: res.locals.user?.username }))
         .catch(next);
 })
 
@@ -103,7 +103,7 @@ router.delete('/:id', isAuth, (req, res, next) => {
             }
             return entityService.deleteOne(req.params.id)
         })
-        .then(x => res.json({ _id: x._id, msg: 'Successfully delete entity!' }))
+        .then(x => res.json({ _id: x._id, msg: 'Successfully delete entity!', token: res.locals.token, username: res.locals.user?.username }))
         .catch(next);
 })
 

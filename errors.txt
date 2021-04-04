@@ -523,3 +523,22 @@ User is not a creator of entity!
 User is not a creator of entity!
 User is not a creator of entity!
 User is not a creator of entity!
+Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
+Not authenticated.
+Not authenticated.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+User is logged in!
+Not authorized.
+User is logged in!
+Not authorized.
+User is logged in!
+Cannot read property 'username' of undefined
+Cannot read property 'username' of undefined
+Cannot read property 'username' of undefined

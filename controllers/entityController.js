@@ -73,7 +73,9 @@ router.post('/',
 router.put('/:id', isAuth, (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => {
-            if (x.creator != res.locals.user._id) throw { status: 401, msg: 'User is not a creator of entity!' };
+            // if (x.creator != res.locals.user._id) throw {
+            //     status: 401, msg: 'User is not a creator of entity!', username: res.locals.user.username, token: res.locals.token
+            // };
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })

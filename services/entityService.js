@@ -76,7 +76,7 @@ function createOne(data) {
 
 function updateOne(entityId, data) {
     return new Promise((resolve, reject) => {
-        Entity.findByIdAndUpdate({ _id: entityId }, data, { useFindAndModify: false })
+        Entity.findByIdAndUpdate({ _id: entityId }, data, { useFindAndModify: false, new: true })
             .then(x => resolve(x))
             .catch(x => {
                 let err = {};

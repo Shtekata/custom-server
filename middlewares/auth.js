@@ -17,23 +17,21 @@ export default function () {
                     res.locals.token = token;
                     authService.getUser({ _id: payload._id })
                         .then(x => {
-                            if (!x) return null;
+                            if (!x) throw ({ status: 409, msg: 'User is not registered!' })
                             return {
                                 username: x.username,
                                 token: jwt.sign({ _id: x._id, username: x.username, email: x.email, roles: x.roles }, SECRET, { expiresIn: '1h' })
                             };
                         })
                         .then(x => {
-                            if (!x) return null;
                             return Promise.all([User.updateOne({ username: x.username }, { token: x.token }), x.token])
                         })
                         .then(x => {
-                            if (!x) return null;
                             res.locals.user = x[0];
                             res.locals.token = x[1];
                             return;
                         })
-                        .catch(next({ status: 409, msg: 'User is not registered!' }));
+                        .catch(next);
                 }
                 else if (e) next(e);
                 else {

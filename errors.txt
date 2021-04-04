@@ -484,3 +484,12 @@ E11000 duplicate key error collection: 5fb013da06ba022ad7e45ef0_task-manager.use
 E11000 duplicate key error collection: 5fb013da06ba022ad7e45ef0_task-manager.users index: username_1 dup key: { username: "Gekata" }
 E11000 duplicate key error collection: 5fb013da06ba022ad7e45ef0_task-manager.users index: username_1 dup key: { username: "Gekata" }
 You have to log off!
+User is not registered!
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+Not authenticated.
+User is logged in!
+Not authenticated.

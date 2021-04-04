@@ -96,9 +96,9 @@ router.patch('/:id', isAuth, (req, res, next) => {
 router.delete('/:id', isAuth, (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => {
-            if (x.creator != res.locals.user._id) {
-                throw { msg: 'You are not author!', status: 403, token: res.locals.token, username: res.locals.user?.username };
-            }
+            // if (x.creator != res.locals.user._id) {
+            //     throw { msg: 'You are not author!', status: 403, token: res.locals.token, username: res.locals.user?.username };
+            // }
             return entityService.deleteOne(req.params.id)
         })
         .then(x => res.json({ _id: x._id, msg: 'Successfully delete entity!', token: res.locals.token, username: res.locals.user?.username }))

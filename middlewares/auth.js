@@ -12,7 +12,10 @@ export default function () {
         if (token && token != 'undefined'){
             jwt.verify(token, SECRET, (e, x) => {
                 if (e && e.message == 'jwt expired') {
-                    authService.getUserByToken(token)
+                    const payload = jwt.verify(token, SECRET, { ignoreExpiration: true })
+                    res.locals.user = payload;
+                    res.locals.token = token;
+                    authService.getUser({ _id: payload._id })
                         .then(x => {
                             if (!x) return null;
                             return {
@@ -28,13 +31,15 @@ export default function () {
                             if (!x) return null;
                             res.locals.user = x[0];
                             res.locals.token = x[1];
+                            return;
                         })
-                        .catch(x => console.log(x));
+                        .catch(next({ status: 409, msg: 'User is not registered!' }));
                 }
                 else if (e) next(e);
                 else {
                     res.locals.token = token;
                     res.locals.user = x;
+                    return;
                 }
             });
         }

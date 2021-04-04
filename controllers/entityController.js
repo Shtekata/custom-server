@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
     entityService.getOne(req.params.id)
-        .then(x => { res.status(200).json({ enitity: x, msg: 'Successfully get entity!' }) })
+        .then(x => { res.status(200).json({ entity: x, msg: 'Successfully get entity!', token: res.locals.token }) })
         .catch(next)
 });
 
@@ -47,7 +47,7 @@ router.post('/',
         .isLength({ min: ENTITY_PROPERTY_THREE_MIN_LENGTH, max: ENTITY_PROPERTY_THREE_MAX_LENGTH })
         .withMessage(`${ENTITY_PROPERTY_THREE} must be between ${ENTITY_PROPERTY_THREE_MIN_LENGTH} and ${ENTITY_PROPERTY_THREE_MAX_LENGTH} characters!`),
     body('isPublic').custom((value, { req }) => {
-            if (value === 'on' || value === undefined) return true;
+            if (value === 'on' || value === '') return true;
             throw {err:{msg:'isPublic not working properly!'}}; }),
     // body('imageUrl', 'Not valid image URL').isURL({ protocols: ['http', 'https'] }),
     // body('price').trim()
@@ -63,10 +63,10 @@ router.post('/',
         };
 
         let data = req.body;
-        data.isPublic = !!data.isPublic;
+        data.isPublic = !!req.body.isPublic;
         data.creator = res.locals.user._id;
         entityService.createOne(data)
-            .then(x => res.status(201).json({ _id: x._id, msg: 'Successfully created entity!' }))
+            .then(x => res.status(201).json({ _id: x._id, msg: 'Successfully created entity!', token: res.locals.token }))
             .catch(next);
     });
 
@@ -77,7 +77,7 @@ router.put('/:id', isAuth, (req, res, next) => {
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })
-        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!' }))
+        .then(x => res.status(200).json({ entity: x, msg: 'Successfully updated entity!', token: res.locals.token }))
         .catch(next);
 })
 
@@ -87,7 +87,7 @@ router.patch('/:id', isAuth, (req, res, next) => {
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })
-        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!' }))
+        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!', token: res.locals.token }))
         .catch(next);
 })
 

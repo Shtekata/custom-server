@@ -61,7 +61,7 @@ router.post('/register',
 
 router.get('/logout', isAuth, (req, res, next) => {
     authService.logout(res.locals.user.username)
-        .then(x => res.status(200).json({ _id: x._id }))
+        .then(x => res.status(200).json({ _id: x._id, message: 'User successfully loged out!' }))
         .catch(next);
 });
 

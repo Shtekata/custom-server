@@ -3,20 +3,24 @@ import Entity from '../models/Entity.js';
 
 function getAll(query) {
     return Entity.find()
-        .where({ title: { $regex: query || '', $options: 'i' } })
+        .where({ query })
         .populate('creator');
 }
 
 function getAllAsc(query) {
     return Entity.find()
-        .where({ title: { $regex: query || '', $options: 'i' } })
-        .sort('createdAt');
+        .where({ query })
+        // .where({ title: { $regex: query || '', $options: 'i' } })
+        .sort('createdAt')
+        .populate('creator');
 }
 
 function getAllDesc(query) {
     return Entity.find()
-        .where({ title: { $regex: query || '', $options: 'i' } })
-        .sort('-createdAt');
+        .where(query)
+        // .where({ title: { $regex: query || '', $options: 'i' } })
+        .sort('-createdAt')
+        .populate('creator');
 };
 
 function getAllLikesDesc(query) {

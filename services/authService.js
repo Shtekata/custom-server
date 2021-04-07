@@ -60,6 +60,8 @@ const logout = (username) => {
 
 const getUser = (id) => User.findById(id);
 
+const getUserByUsername = (username) => User.findOne({ username });
+
 const getUserByToken = (token) => User.findOne({ token });
 
 const getUserWithOffersBought = (id) => User.findById(id).populate('offersBought');
@@ -70,5 +72,6 @@ export default {
     logout,
     getUser,
     getUserByToken,
+    getUserByUsername,
     getUserWithOffersBought
 }

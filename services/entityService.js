@@ -1,10 +1,12 @@
 import User from '../models/User.js';
 import Entity from '../models/Entity.js';
+import authService from './authService.js';
 
 function getAll(query) {
     return Entity.find()
         .where({ query })
-        .populate('creator');
+        .populate('creator')
+        .populate('executor');
 }
 
 function getAllAsc(query) {
@@ -12,15 +14,17 @@ function getAllAsc(query) {
         .where({ query })
         // .where({ title: { $regex: query || '', $options: 'i' } })
         .sort('createdAt')
-        .populate('creator');
+        .populate('creator')
+        .populate('executor');
 }
 
 function getAllDesc(query) {
     return Entity.find()
         .where(query)
         // .where({ title: { $regex: query || '', $options: 'i' } })
-        .sort('-createdAt')
-        .populate('creator');
+        .sort('-executedOn')
+        .populate('creator')
+        .populate('executor');
 };
 
 function getAllLikesDesc(query) {
@@ -79,20 +83,25 @@ function createOne(data) {
 }
 
 function updateOne(entityId, data) {
-    return new Promise((resolve, reject) => {
-        Entity.findByIdAndUpdate({ _id: entityId }, data, { useFindAndModify: false, new: true })
-            .then(x => resolve(x))
-            .catch(x => {
-                let err = {};
-                if (!x.errors) err.msg = x.message;
-                else {
-                    Object.keys(x.errors).map(y =>
-                        err.msg = err.msg ? `${err.msg}\n${x.errors[y].message}` : x.errors[y].message
-                    );
-                }
-                reject(err);
-            });
-    });
+    return authService.getUserByUsername(data.user)
+        .then(x => {
+            if (x) {
+                data.executor = x;
+                data.executedOn = new Date();
+            }
+            return Entity.findByIdAndUpdate({ _id: entityId }, data, { new: true, useFindAndModify: false });
+        })
+        .catch(x => {
+            let err = {};
+            if (!x.errors) err.msg = x.message;
+            else {
+                Object.keys(x.errors).map(y =>
+                    err.msg = err.msg ? `${err.msg}\n${x.errors[y].message}` : x.errors[y].message
+                );
+            }
+            throw err;
+        });
+    
 }
 
 function deleteOne(id) {

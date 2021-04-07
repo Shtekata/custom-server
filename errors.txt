@@ -13276,3 +13276,34 @@ Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
 Cast to ObjectId failed for value "undefined" at path "_id" for model "Task"
 User is logged in!
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Not authorized.
+Cannot read property '_id' of undefined
+User is logged in!
+Callback must be a function, got [object Object]
+User is logged in!
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+User is logged in!
+[object Object]
+[object Object]
+isPublic not working properly!
+You have to log off!
+isPublic not working properly!
+You have to log off!
+isPublic not working properly!
+isPublic not working properly!
+isPublic not working properly!
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }

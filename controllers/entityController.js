@@ -48,7 +48,7 @@ router.post('/',
         .withMessage(`${ENTITY_PROPERTY_THREE} must be between ${ENTITY_PROPERTY_THREE_MIN_LENGTH} and ${ENTITY_PROPERTY_THREE_MAX_LENGTH} characters!`),
     body('isPublic').custom((value, { req }) => {
             if (value === 'on' || value === '') return true;
-            throw {err:{msg:'isPublic not working properly!'}}; }),
+            throw 'isPublic not working properly!'; }),
     // body('imageUrl', 'Not valid image URL').isURL({ protocols: ['http', 'https'] }),
     // body('price').trim()
     //     .isFloat({ min: ENTITY_PROPERTY_THREE_MIN_LENGTH })
@@ -59,7 +59,7 @@ router.post('/',
             let err = {};
             const errors = validationResult(req).array();
             errors.forEach(x => err.msg = err.msg ? `${err.msg} ${x.msg}` : x.msg);
-            throw ({ msg: err.msg, status: 403, body: req.body });
+            throw ({ msg: err.msg, status: 403 });
         };
 
         let data = req.body;
@@ -79,17 +79,17 @@ router.put('/:id', isAuth, (req, res, next) => {
             req.body.isPublic = !!req.body.isPublic;
             return entityService.updateOne(req.params.id, req.body);
         })
-        .then(x => res.status(200).json({ entity: x, msg: 'Successfully updated entity!', token: res.locals.token, username: res.locals.user?.username }))
+        .then(x => res.status(200).json({ entity: x, msg: 'Successfully updated entity!', token: res.locals.token, username: res.locals.user?.username, entity: x }))
         .catch(next);
 })
 
 router.patch('/:id', isAuth, (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => {
-            req.body.isPublic = !!req.body.isPublic;
+            req.body.isPublic ? !!req.body.isPublic : true;
             return entityService.updateOne(req.params.id, req.body);
         })
-        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!', token: res.locals.token, username: res.locals.user?.username }))
+        .then(x => res.status(200).json({ _id: x._id, msg: 'Successfully updated entity!', token: res.locals.token, username: res.locals.user?.username, entity: x }))
         .catch(next);
 })
 

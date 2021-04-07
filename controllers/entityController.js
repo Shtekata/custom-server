@@ -47,7 +47,7 @@ router.post('/',
         .isLength({ min: ENTITY_PROPERTY_THREE_MIN_LENGTH, max: ENTITY_PROPERTY_THREE_MAX_LENGTH })
         .withMessage(`${ENTITY_PROPERTY_THREE} must be between ${ENTITY_PROPERTY_THREE_MIN_LENGTH} and ${ENTITY_PROPERTY_THREE_MAX_LENGTH} characters!`),
     body('isPublic').custom((value, { req }) => {
-            if (value === 'on' || value === '') return true;
+            if (value === 'on' || value === '' || value === undefined) return true;
             throw 'isPublic not working properly!'; }),
     // body('imageUrl', 'Not valid image URL').isURL({ protocols: ['http', 'https'] }),
     // body('price').trim()

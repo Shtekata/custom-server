@@ -13307,3 +13307,6 @@ E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key
 E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
 E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
 E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key: { title: "Kesho" }
+Description must be between 10 and 500 characters! isPublic not working properly!
+isPublic not working properly!
+isPublic not working properly!

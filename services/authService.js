@@ -64,14 +64,11 @@ const getUserByUsername = (username) => User.findOne({ username });
 
 const getUserByToken = (token) => User.findOne({ token });
 
-const getUserWithOffersBought = (id) => User.findById(id).populate('offersBought');
-
 export default {
     login,
     register,
     logout,
     getUser,
     getUserByToken,
-    getUserByUsername,
-    getUserWithOffersBought
+    getUserByUsername
 }

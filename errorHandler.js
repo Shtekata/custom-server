@@ -6,7 +6,7 @@ export default (error, req, res, next) => {
     err.msg = error.message || error.msg || 'Something went wrong';
     err.type = 'ERROR'
     res.locals.token ? err.token = res.locals.token : true;
-    res.locals.user ? err.username = res.locals.user.username : true;
+    if (res.locals.user) { err.username = res.locals.user.username, err.userId = res.locals.user.userId };
 
     req.session.err = err;
     if (process.env.NODE_ENV == 'development') console.log(err);

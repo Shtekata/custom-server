@@ -13310,3 +13310,30 @@ E11000 duplicate key error collection: task-manager.tasks index: title_1 dup key
 Description must be between 10 and 500 characters! isPublic not working properly!
 isPublic not working properly!
 isPublic not working properly!
+You have to log off!
+You have to log off!
+Unexpected token n in JSON at position 0
+Unexpected token " in JSON at position 0
+Unexpected token n in JSON at position 0
+User is logged in!
+User is logged in!
+User is logged in!
+Not authorized.
+Not authorized.
+User is logged in!
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+You have to log off!
+You have to log off!
+You have to log off!
+Cannot read property '1' of null
+Cannot read property '1' of null
+Cannot read property '1' of null
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+Cannot read property '_id' of undefined
+You have to log off!
+Cast to ObjectId failed for value "null" at path "_id" for model "User"
+Cast to ObjectId failed for value "null" at path "_id" for model "User"

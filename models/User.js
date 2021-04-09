@@ -31,6 +31,28 @@ const userSchema = new mongoose.Schema({
         //     message: (x) => `${x.value} schould consist only english letters and digits!`
         // },
     },
+    alternateEmail: {
+        type: String,
+        unique: true,
+        minlength: 3,
+        maxlength: 30
+    },
+    phoneNumber: {
+        type: String,
+        unique: true,
+        minlength: 6,
+        maxlength: 30
+    },
+    address: {
+        type: String,
+        minlength: 6,
+        maxlength: 200
+    },
+    photoUrl: {
+        type: String,
+        minlength: 6,
+        maxlength: 200
+    },
     token: {
         type: String,
         default: ''

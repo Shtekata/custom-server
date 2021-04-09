@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema({
     address: {
         type: String,
         minlength: 6,
-        maxlength: 200
+        maxlength: 500
     },
     photoUrl: {
         type: String,

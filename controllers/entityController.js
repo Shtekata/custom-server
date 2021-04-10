@@ -130,4 +130,8 @@ router.delete('/:id', isAuth, (req, res, next) => {
         .catch(next);
 })
 
+router.post('/error', isAuth, (req, res, next) => {
+    throw { error: req.body };
+})
+
 export default router;

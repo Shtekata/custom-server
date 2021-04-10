@@ -13376,3 +13376,19 @@ E11000 duplicate key error collection: task-manager.users index: email_1 dup key
 E11000 duplicate key error collection: task-manager.users index: email_1 dup key: { email: "gesheval35@gmail.com" }
 You have to log off!
 You have to log off!
+Not authorized.
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Gekata" }
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Gekata" }
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Gekata" }
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Lekata" }
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Gekata" }
+User is logged in!
+Not authorized.
+User is logged in!
+Not authorized.
+User is logged in!
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Gekata" }
+E11000 duplicate key error collection: task-manager.users index: email_1 dup key: { email: "gesheval@gmail.com" }
+E11000 duplicate key error collection: task-manager.users index: email_1 dup key: { email: "gesheval@gmail.com" }
+E11000 duplicate key error collection: task-manager.users index: email_1 dup key: { email: "gesheval@gmail.com" }
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Gekata" }

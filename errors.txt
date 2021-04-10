@@ -13357,3 +13357,22 @@ Cast to ObjectId failed for value "null" at path "_id" for model "User"
 Cast to ObjectId failed for value "null" at path "_id" for model "User"
 Cannot read property 'toString' of undefined
 You have to log off!
+Specify username!
+Username must be at least 3 characters!
+Only english letters and digits are allowed for username!
+Not valid email!
+authService is not defined
+Specify username!
+Username must be at least 3 characters!
+Only english letters and digits are allowed for username!
+Not valid email!
+x is not defined
+E11000 duplicate key error collection: task-manager.users index: username_1 dup key: { username: "Shtekata" }
+Cannot read property 'email' of undefined
+Phone Number must be between 100000000 and 100000000000000!
+Phone Number must be between 100000000 and 100000000000000!
+Phone Number must be between 100000000 and 100000000000000!
+E11000 duplicate key error collection: task-manager.users index: email_1 dup key: { email: "gesheval35@gmail.com" }
+E11000 duplicate key error collection: task-manager.users index: email_1 dup key: { email: "gesheval35@gmail.com" }
+You have to log off!
+You have to log off!

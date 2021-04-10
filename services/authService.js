@@ -64,11 +64,26 @@ const getUserByUsername = (username) => User.findOne({ username });
 
 const getUserByToken = (token) => User.findOne({ token });
 
+const updateUser = ({ _id, data }) => User.findByIdAndUpdate({ _id }, data, { new: true, useFindAndModify: false })
+    .catch(x => {
+        let err = {};
+        if (!x.errors) err.msg = x.message;
+        else {
+            Object.keys(x.errors).map(y =>
+                err.msg = err.msg ? `${err.msg}\n${x.errors[y].message}` : x.errors[y].message
+            );
+        }
+        throw err;
+    });
+    
+
+
 export default {
     login,
     register,
     logout,
     getUser,
     getUserByToken,
-    getUserByUsername
+    getUserByUsername,
+    updateUser
 }

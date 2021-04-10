@@ -3,9 +3,6 @@ import entityService from '../services/entityService.js';
 import isAuth from '../middlewares/isAuth.js';
 import { body, validationResult } from 'express-validator';
 import {
-    ENTITIES,
-    ENTITY_NAME,
-    TITLE_HOME,
     ENTITY_PROPERTY_ONE,
     ENTITY_PROPERTY_ONE_MIN_LENGTH,
     ENTITY_PROPERTY_TWO,
@@ -22,8 +19,6 @@ router.get('/', (req, res, next) => {
     entityService.getAllDesc(req.query)
         .then(x => res.status(200).json({
             msg: 'Successfully get entities!',
-            userId: res.locals.user?._id.toString(),
-            username: res.locals.user?.username,
             token: res.locals.token,
             entities: x
         }))
@@ -34,8 +29,6 @@ router.get('/:id', (req, res, next) => {
     entityService.getOne(req.params.id)
         .then(x => res.status(200).json({
             msg: 'Successfully get entity!',
-            userId: res.locals.user?._id.toString(),
-            username: res.locals.user?.username,
             token: res.locals.token,
             entity: x
         }))
@@ -71,7 +64,7 @@ router.post('/',
             let err = {};
             const errors = validationResult(req).array();
             errors.forEach(x => err.msg = err.msg ? `${err.msg} ${x.msg}` : x.msg);
-            throw ({ msg: err.msg, status: 403 });
+            
         };
 
         let data = req.body;
@@ -81,8 +74,6 @@ router.post('/',
             .then(x => res.status(201).json({
                 msg: 'Successfully created entity!',
                 _id: x._id,
-                userId: res.locals.user?._id.toString(),
-                username: res.locals.user?.username,
                 token: res.locals.token,
                 entity: x
             }))
@@ -101,8 +92,6 @@ router.put('/:id', isAuth, (req, res, next) => {
         .then(x => res.status(200).json({
             msg: 'Successfully updated entity!',
             _id: x._id,
-            userId: res.locals.user?._id.toString(),
-            username: res.locals.user?.username,
             token: res.locals.token,
             entity: x
         }))
@@ -118,8 +107,6 @@ router.patch('/:id', isAuth, (req, res, next) => {
         .then(x => res.status(200).json({
              msg: 'Successfully updated entity!',
             _id: x._id,
-            userId: res.locals.user?._id.toString(),
-            username: res.locals.user?.username,
             token: res.locals.token,
             entity: x
         }))
@@ -137,8 +124,6 @@ router.delete('/:id', isAuth, (req, res, next) => {
         .then(x => res.json({
             msg: 'Successfully delete entity!',
             _id: x._id,
-            userId: res.locals.user?._id.toString(),
-            username: res.locals.user?.username,
             token: res.locals.token,
             entity: x
         }))

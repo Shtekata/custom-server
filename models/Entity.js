@@ -10,12 +10,12 @@ const entitySchema = new mongoose.Schema({
     description: {
         type: String,
         required: [true, 'Description is required!'],
-        minlength: 10,
+        minlength: 5,
         maxlength: 500
     },
     solution: {
         type: String,
-        minlength: 10,
+        minlength: 5,
         maxlength: 500
     },
     isPublic: {

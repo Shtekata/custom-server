@@ -67,7 +67,7 @@ router.post('/register',
                 token: x[1],
                 userId: x[2]._id.toString(),
                 username: x[2].username,
-                email: x[2].email
+                email: x[2].email,
             }))
             .catch(next);
     });
